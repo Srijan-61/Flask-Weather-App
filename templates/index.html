@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #8ec5fc, #e0c3fc);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+   
+    .form-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      flex: 1;
+      min-width: 150px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #4a90e2;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #357ab8;
+    }
+
+    .weather {
+      margin-top: 20px;
+    }
+
+    .weather h2 {
+      color: #222;
+      font-size: 22px;
+    }
+
+    .weather p {
+      color: #444;
+      font-size: 18px;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .weather img {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+      margin-top: 10px;
+    }
+
+    .weather img:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+
+    
+    <form method="post" class="form-row">
+      <input type="text" name="city" placeholder="Enter city name" required />
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <!-- Weather display logic -->
+    {% if weather %}
+      <div class="weather">
+        {% if weather.error %}
+          <p class="error">{{ weather.error }}</p>
+        {% else %}
+          <h2>{{ weather.city }}</h2>
+          <p>{{ weather.description }}</p>
+          <p>{{ weather.temperature }} °C</p>
+          <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon" />
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
