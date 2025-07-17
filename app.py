@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
-API_KEY = "c7cbb8facada418906fd436ee614b3da"  
+
+API_KEY = os.environ.get("API_KEY")
+ 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
