@@ -19,7 +19,7 @@ A simple weather web application built using **Flask** and the **OpenWeatherMap 
 - **Python**
 - **Flask**
 - **OpenWeatherMap API**
-- **HTML/CSS (Jinja2 templates)**
+- **HTML/CSS **
 
 ---
 
